@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Personal Project",
     period: "01/2026 – Present",
     description: "Implementation of localization using IMU with Extended Kalman Filter (EKF).",
-    image: "public/assets/projects/ekf.png",
+    image: "./public/assets/projects/ekf.png",
     tech: ["C++", "ROS2", "EKF"]
   },
   {
@@ -125,7 +125,7 @@ export const PROJECTS: Project[] = [
     subtitle: "EyeROV Product Development",
     period: "08/2024 – 08/2025",
     description: "Developed a ROS2-based autonomous boat with Nav2 for GPS and IMU-based navigation. Integrated LiDAR for dynamic obstacle avoidance.",
-    image: "public/assets/projects/autonomous-surface-vehicle.png",
+    image: "./public/assets/projects/autonomous-surface-vehicle.png",
     tech: ["ROS2", "Nav2", "LiDAR", "GPS"]
   },
   {
@@ -133,7 +133,7 @@ export const PROJECTS: Project[] = [
     subtitle: "EyeROV Product Development",
     period: "05/2023 – 08/2025",
     description: "Built control software for underwater drones using React (frontend) and ROS (backend), integrating payloads and joystick configuration.",
-    image: "public/assets/projects/icontrolhub.png",
+    image: "./public/assets/projects/icontrolhub.png",
     tech: ["React", "ROS", "Qt", "Python"]
   },
   {
@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
     subtitle: "M.Tech Major Project",
     period: "08/2021 – 06/2022",
     description: "Home service robot for elderly care using ROS1 with SLAM and MoveIt. Enabled autonomous navigation, object pickup, and voice command via Alexa.",
-    image: "public/assets/projects/home-assistant.png",
+    image: "./public/assets/projects/home-assistant.png",
     tech: ["ROS1", "SLAM", "MoveIt", "Alexa Skills"]
   },
   {
@@ -149,7 +149,7 @@ export const PROJECTS: Project[] = [
     subtitle: "B.Tech Major Project",
     period: "01/2019 – 01/2021",
     description: "Autonomous farming robot to automate planting and irrigation processes to enhance agriculture efficiency.",
-    image: "public/assets/projects/farmbot.png",
+    image: "./public/assets/projects/farmbot.png",
     tech: ["Embedded C", "Robotics", "Agriculture Tech"]
   }
 ];

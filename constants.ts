@@ -56,39 +56,57 @@ export const EXPERIENCES: Experience[] = [
 
 export const SKILLS: SkillCategory[] = [
   {
-    category: "Robotics & Software",
+    category: "Robotics Middleware & Frameworks",
     skills: [
-      { name: "ROS1 & ROS2", level: 4 },
-      { name: "SLAM", level: 5 },
-      { name: "Sensor Fusion", level: 4 },
-      { name: "Navigation Stack & Nav2", level: 4 },
-      { name: "Path Planning", level: 4 },
-      { name: "A*, Dijkstra's", level: 3 },
-      { name: "URDF, XACRO", level: 4 }
+      { name: "ROS1 & ROS2", level: 5 },
+      { name: "ROS2 Control", level: 4 },
+      { name: "MAVLink", level: 4 },
+      { name: "RViz2", level: 4 },
+      { name: "rqt_graph", level: 3 },
+      { name: "URDF", level: 4 },
+      { name: "XACRO", level: 4 },
+      { name: "Custom Messages & Services", level: 4 },
+      { name: "Gazebo Classic", level: 4 },
+      { name: "Isaac Sim", level: 3 }
     ]
   },
   {
-    category: "Programming & Tools",
+    category: "Navigation & Perception",
     skills: [
-      { name: "C++", level: 4 },
-      { name: "Python", level: 5 },
-      { name: "Embedded C", level: 4 },
-      { name: "Linux & Bash", level: 4 },
+      { name: "Nav2 (Navigation Stack)", level: 5 },
+      { name: "Waypoint Navigation", level: 4 },
+      { name: "Mission Planning", level: 4 },
       { name: "OpenCV", level: 4 },
-      { name: "PyQt", level: 4 },
-      { name: "Flask", level: 3 }
+      { name: "YOLO v8", level: 3 },
+      { name: "Camera Calibration & FoV Alignment", level: 4 },
+      { name: "SLAM", level: 5 },
+      { name: "EKF-based Sensor Fusion", level: 4 },
+      { name: "Robot Localization", level: 4 },
+      { name: "Path Planning (A*, Dijkstra's)", level: 4 },
+      { name: "Dynamic Obstacle Avoidance", level: 4 }
     ]
   },
   {
-    category: "Hardware & Vision",
+    category: "Hardware & Embedded Integration",
     skills: [
-      { name: "PCB Design (Fusion 360)", level: 4 },
-      { name: "Nvidia Jetson Orin/Nano", level: 4 },
-      { name: "YOLO V8", level: 3 },
+      { name: "NVIDIA Jetson Platforms", level: 4 },
+      { name: "NVIDIA DriveWorks", level: 3 },
       { name: "2D & 3D LiDAR", level: 5 },
-      { name: "UART, SPI, I2C, MQTT", level: 4 },
-      { name: "ArduPilot / MAVLink", level: 4 },
-      { name: "RTSP / WebRTC", level: 4 }
+      { name: "GPS, IMU, DVL, USBL", level: 4 },
+      { name: "PCB Designing & 3D Modeling (Fusion 360)", level: 3 },
+      { name: "UART, SPI, I2C, MQTT", level: 4 }
+    ]
+  },
+  {
+    category: "Software & Systems Engineering",
+    skills: [
+      { name: "Python (Middleware/Scripting)", level: 5 },
+      { name: "C++ (Real-time Systems)", level: 4 },
+      { name: "Embedded C", level: 4 },
+      { name: "Linux & Bash Scripting", level: 4 },
+      { name: "Flask (REST API)", level: 3 },
+      { name: "React (Frontend)", level: 3 },
+      { name: "RTSP & WebRTC Streaming", level: 3 }
     ]
   }
 ];
@@ -99,6 +117,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Personal Project",
     period: "01/2026 – Present",
     description: "Implementation of localization using IMU with Extended Kalman Filter (EKF).",
+    image: "assets/projects/ekf.png",
     tech: ["C++", "ROS2", "EKF"]
   },
   {
@@ -106,6 +125,7 @@ export const PROJECTS: Project[] = [
     subtitle: "EyeROV Product Development",
     period: "08/2024 – 08/2025",
     description: "Developed a ROS2-based autonomous boat with Nav2 for GPS and IMU-based navigation. Integrated LiDAR for dynamic obstacle avoidance.",
+    image: "assets/projects/autonomous-surface-vehicle.png",
     tech: ["ROS2", "Nav2", "LiDAR", "GPS"]
   },
   {
@@ -113,6 +133,7 @@ export const PROJECTS: Project[] = [
     subtitle: "EyeROV Product Development",
     period: "05/2023 – 08/2025",
     description: "Built control software for underwater drones using React (frontend) and ROS (backend), integrating payloads and joystick configuration.",
+    image: "assets/projects/icontrolhub.png",
     tech: ["React", "ROS", "Qt", "Python"]
   },
   {
@@ -120,6 +141,7 @@ export const PROJECTS: Project[] = [
     subtitle: "M.Tech Major Project",
     period: "08/2021 – 06/2022",
     description: "Home service robot for elderly care using ROS1 with SLAM and MoveIt. Enabled autonomous navigation, object pickup, and voice command via Alexa.",
+    image: "assets/projects/home-assistant.png",
     tech: ["ROS1", "SLAM", "MoveIt", "Alexa Skills"]
   },
   {
@@ -127,6 +149,7 @@ export const PROJECTS: Project[] = [
     subtitle: "B.Tech Major Project",
     period: "01/2019 – 01/2021",
     description: "Autonomous farming robot to automate planting and irrigation processes to enhance agriculture efficiency.",
+    image: "assets/projects/farmbot.png",
     tech: ["Embedded C", "Robotics", "Agriculture Tech"]
   }
 ];
@@ -161,19 +184,5 @@ export const BLOG_POSTS = [
     excerpt: "Exploring the distinct technical hurdles and sensor requirements for navigating autonomous systems in structured indoor environments vs. unpredictable outdoor terrains.",
     tags: ["Navigation", "SLAM", "Field Robotics"],
     link: "https://medium.com/@vidhunvwarrier/indoor-vs-outdoor-autonomous-navigation-my-experience-ff2276b1249b"
-  },
-  {
-    title: "Integrating ROS2 with Automotive ECUs",
-    date: "Feb 10, 2025",
-    excerpt: "A technical dive into bridging high-performance robotics middleware with production vehicle hardware and real-time networking protocols.",
-    tags: ["ROS2", "Automotive", "Middleware"],
-    link: "https://medium.com/@vidhunvwarrier"
-  },
-  {
-    title: "The Future of Edge Computing in Robotics",
-    date: "Dec 15, 2024",
-    excerpt: "Why NVIDIA Jetson and similar edge devices are revolutionizing real-time autonomous navigation and perception pipelines.",
-    tags: ["NVIDIA", "Edge AI", "Computer Vision"],
-    link: "https://medium.com/@vidhunvwarrier"
   }
 ];

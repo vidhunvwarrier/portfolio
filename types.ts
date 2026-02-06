@@ -13,6 +13,7 @@ export interface Project {
   subtitle: string;
   period: string;
   description: string;
+  image?: string;
   tech?: string[];
 }
 

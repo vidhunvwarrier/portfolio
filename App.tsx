@@ -38,10 +38,7 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Dynamic Data State
-  const [blogPosts, setBlogPosts] = useState(() => {
-    const saved = localStorage.getItem('v_warrier_blogs');
-    return saved ? JSON.parse(saved) : INITIAL_BLOG_POSTS;
-  });
+  const [blogPosts, setBlogPosts] = useState(() => INITIAL_BLOG_POSTS);
 
   // Login Form State
   const [loginEmail, setLoginEmail] = useState('');
@@ -60,8 +57,8 @@ const App: React.FC = () => {
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    localStorage.setItem('v_warrier_blogs', JSON.stringify(blogPosts));
-  }, [blogPosts]);
+    localStorage.removeItem('v_warrier_blogs');
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,6 +141,7 @@ const App: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    setActiveSection(id);
     if (currentView !== 'portfolio') {
       setCurrentView('portfolio');
       setTimeout(() => {
@@ -444,21 +442,18 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="relative w-full max-w-xl lg:max-w-none mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-yellow-400/20 via-transparent to-transparent blur-2xl"></div>
-              <div className={`relative border ${isDarkMode ? 'border-white/15' : 'border-black/10'} bg-[var(--bg-surface)] p-4 shadow-2xl`}>
-                <div className="absolute -top-3 -left-3 w-6 h-6 bg-yellow-400 rotate-45"></div>
+            <div className="relative w-full max-w-xl lg:max-w-none mx-auto group">
+              <div className="absolute -inset-10 bg-gradient-to-br from-yellow-400/20 via-transparent to-transparent blur-3xl"></div>
+              <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80"
-                  alt="Robotics engineer working with sensors"
+                  src="https://www.pngall.com/wp-content/uploads/12/Wall-E-Robot-PNG-Pic.png"
+                  alt="WALL-E robot"
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-[420px] md:h-[520px] object-cover"
+                  className={`w-full h-[420px] md:h-[520px] object-contain ${isDarkMode ? 'mix-blend-screen opacity-90' : 'opacity-100'}`}
                 />
-                <div className="mt-4 flex items-center justify-between text-[10px] mono font-black uppercase tracking-[0.3em] text-neutral-500">
-                  <span>VISION_FEED</span>
-                  <span className={isDarkMode ? 'text-white' : 'text-black'}>LIVE</span>
-                </div>
+                {isDarkMode && <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>}
+                <div className={`absolute inset-0 bg-gradient-to-t ${isDarkMode ? 'from-[var(--bg-deep)]' : 'from-white/40'} via-transparent to-transparent`}></div>
               </div>
             </div>
           </div>
@@ -536,32 +531,35 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className={`grid lg:grid-cols-3 gap-0 border ${isDarkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
+            <div className="grid md:grid-cols-2 gap-8">
               {SKILLS.map((category, idx) => (
-                <div key={idx} className={`p-16 border-neutral-800 hover:bg-neutral-500/5 transition-colors duration-500 last:border-0 border-r lg:border-r`}>
-                  <div className="flex items-center gap-6 mb-20">
-                    <span className={`text-7xl font-black ${isDarkMode ? 'text-neutral-800' : 'text-neutral-200'}`}>0{idx + 1}</span>
-                    <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--text-primary)]">{category.category}</h3>
+                <div
+                  key={idx}
+                  className={`p-10 md:p-12 border ${isDarkMode ? 'border-neutral-800 bg-[var(--bg-surface)]' : 'border-neutral-200 bg-white'} hover:bg-neutral-500/5 transition-colors duration-500`}
+                >
+                  <div className="mb-8">
+                    <p className="text-[10px] mono font-black uppercase tracking-widest text-neutral-500">Skill Group</p>
+                    <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--text-primary)] mt-2">
+                      {category.category}
+                    </h3>
+                    <div className={`mt-4 h-1 w-12 ${isDarkMode ? 'bg-yellow-400' : 'bg-black'}`}></div>
                   </div>
 
-                  <div className="space-y-12">
+                  <ul className="space-y-4 text-lg">
                     {category.skills.map((skill, sIdx) => (
-                      <div key={sIdx} className="group cursor-default">
-                        <div className="flex justify-between items-center text-xs mono font-black uppercase tracking-widest mb-4">
-                          <span className="text-neutral-500 group-hover:text-yellow-400 transition-colors">{skill.name}</span>
-                          <span className="text-neutral-600">[{skill.level}/5]</span>
+                      <li key={sIdx} className="space-y-2">
+                        <div className={`${isDarkMode ? 'text-neutral-300' : 'text-neutral-700'} leading-relaxed`}>
+                          {skill.name}
                         </div>
-                        <div className="flex gap-1.5 h-1.5">
-                          {[...Array(5)].map((_, i) => (
-                            <div 
-                              key={i} 
-                              className={`flex-grow transition-all duration-700 ${i < skill.level ? 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.2)]' : 'bg-neutral-500/10'}`}
-                            ></div>
-                          ))}
+                        <div className={`h-1.5 w-full ${isDarkMode ? 'bg-white/5' : 'bg-black/10'} overflow-hidden`}>
+                          <div
+                            className="h-full bg-yellow-400"
+                            style={{ width: `${(skill.level / 5) * 100}%` }}
+                          ></div>
                         </div>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               ))}
             </div>
@@ -573,7 +571,7 @@ const App: React.FC = () => {
             <div className="grid lg:grid-cols-12 gap-12 mb-32 items-end">
               <div className="lg:col-span-8">
                 <h2 className="text-8xl font-black uppercase tracking-tighter leading-none mb-6">Archive<br />Files</h2>
-                <p className={`${isDarkMode ? 'text-neutral-500' : 'text-neutral-400'} text-2xl font-medium max-w-xl`}>
+                <p className={`${isDarkMode ? 'text-blue-400' : 'text-yellow-500'} text-2xl font-medium max-w-xl`}>
                   Senior R&D prototypes across ground, marine, and automotive domains.
                 </p>
               </div>
@@ -589,7 +587,7 @@ const App: React.FC = () => {
                 <div key={idx} className={`group flex flex-col h-full ${isDarkMode ? 'bg-white border-neutral-200' : 'bg-black border-neutral-800'} border overflow-hidden hover:border-yellow-400 transition-all duration-700 shadow-2xl hover:-translate-y-2`}>
                   <div className="aspect-video relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                     <img 
-                      src={`https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&seed=${project.title}`} 
+                      src={project.image ?? `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&seed=${project.title}`}
                       alt={project.title}
                       className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-[2000ms]"
                     />
@@ -598,13 +596,13 @@ const App: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="p-12 flex-grow flex flex-col gap-8 bg-[var(--bg-surface)]">
-                    <div className="flex justify-between items-start">
+                  <div className="p-12 flex-grow flex flex-col gap-8 bg-[var(--bg-surface)] text-[var(--text-primary)]">
+                    <div className="flex justify-between items-start gap-6">
                       <h3 className="text-4xl font-black uppercase tracking-tight leading-none">{project.title}</h3>
-                      <span className="text-xs mono font-black text-neutral-400">{project.period}</span>
+                      <span className="text-xs mono font-black text-[var(--text-secondary)]">{project.period}</span>
                     </div>
                     
-                    <p className={`${isDarkMode ? 'text-neutral-500' : 'text-neutral-400'} text-xl leading-relaxed flex-grow`}>
+                    <p className="text-xl leading-relaxed flex-grow text-[var(--text-secondary)]">
                       {project.description}
                     </p>
                     

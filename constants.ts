@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   email: "vidhunvwarrier@gmail.com",
   phone: "+91 8592802540",
   location: "Kottayam, Kerala",
-  linkedin: "https://linkedin.com/in/vidhunvwarrier",
+  linkedin: "https://www.linkedin.com/in/vidhun-v-warrier-2310b3128/",
   summary: "Senior Robotics Engineer with 3+ years of hands-on experience designing, integrating, and deploying robotic systems across ground, marine, and automotive platforms. Strong expertise in ROS1/ROS2, autonomous navigation, sensor fusion, and real-world hardware integration. Proven ability to take systems from simulation to on-vehicle / field deployment, working closely with sensors, ECUs, and production-grade hardware. Passionate about building scalable robotics middleware and perception-enabled autonomous systems."
 };
 

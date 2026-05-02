@@ -414,14 +414,24 @@ const App: React.FC = () => {
                 <p className="text-xl md:text-3xl text-neutral-500 font-light leading-relaxed">
                   Building <span className={`${isDarkMode ? 'text-white' : 'text-black'} font-bold italic underline decoration-yellow-400`}>autonomous intelligence</span> for high-stakes environments through advanced sensor fusion and ROS architectures.
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="px-10 py-5 bg-yellow-400 text-black font-black text-sm uppercase tracking-widest hover:bg-neutral-800 hover:text-white transition-all flex items-center gap-2 group shadow-2xl shadow-yellow-400/20">
-                    ESTABLISH_LINK
-                    <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                  <a href={PERSONAL_INFO.linkedin} target="_blank" className={`px-10 py-5 border ${isDarkMode ? 'border-white/20 text-white hover:bg-white hover:text-black' : 'border-black/20 text-black hover:bg-black hover:text-white'} font-black text-sm uppercase tracking-widest transition-all`}>
-                    GET_RESUME.LOG
-                  </a>
+                <div className="pt-4 space-y-4">
+                  <div>
+                    <a href={`mailto:${PERSONAL_INFO.email}`} className="inline-flex px-10 py-5 bg-yellow-400 text-black font-black text-sm uppercase tracking-widest hover:bg-neutral-800 hover:text-white transition-all items-center gap-2 group shadow-2xl shadow-yellow-400/20">
+                      ESTABLISH_LINK
+                      <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className={`px-10 py-5 border ${isDarkMode ? 'border-white/20 text-white hover:bg-white hover:text-black' : 'border-black/20 text-black hover:bg-black hover:text-white'} font-black text-sm uppercase tracking-widest transition-all`}>
+                      LINKEDIN.LOG
+                    </a>
+                    <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer" className={`px-10 py-5 border ${isDarkMode ? 'border-white/20 text-white hover:bg-white hover:text-black' : 'border-black/20 text-black hover:bg-black hover:text-white'} font-black text-sm uppercase tracking-widest transition-all`}>
+                      GITHUB.REPO
+                    </a>
+                    <a href={PERSONAL_INFO.medium} target="_blank" rel="noopener noreferrer" className={`px-10 py-5 border ${isDarkMode ? 'border-white/20 text-white hover:bg-white hover:text-black' : 'border-black/20 text-black hover:bg-black hover:text-white'} font-black text-sm uppercase tracking-widest transition-all`}>
+                      MEDIUM.LOG
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -733,6 +743,24 @@ const App: React.FC = () => {
                   <div className="flex flex-col">
                     <span className="text-[11px] mono font-black text-neutral-500 uppercase tracking-widest mb-1">Social_Matrix</span>
                     <span className="text-3xl font-black uppercase tracking-tight group-hover:text-yellow-400 transition-colors">/vidhunvwarrier</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.open(PERSONAL_INFO.github, '_blank')}>
+                  <div className={`w-20 h-20 bg-white text-black group-hover:bg-yellow-400 group-hover:text-black flex items-center justify-center transition-all shadow-2xl group-hover:rotate-12`}>
+                    <Terminal className="w-10 h-10" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] mono font-black text-neutral-500 uppercase tracking-widest mb-1">Code_Archive</span>
+                    <span className="text-3xl font-black uppercase tracking-tight group-hover:text-yellow-400 transition-colors">github.com/vidhunvwarrier</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.open(PERSONAL_INFO.medium, '_blank')}>
+                  <div className={`w-20 h-20 bg-white text-black group-hover:bg-yellow-400 group-hover:text-black flex items-center justify-center transition-all shadow-2xl group-hover:rotate-12`}>
+                    <Radio className="w-10 h-10" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] mono font-black text-neutral-500 uppercase tracking-widest mb-1">Research_Log</span>
+                    <span className="text-3xl font-black uppercase tracking-tight group-hover:text-yellow-400 transition-colors">medium.com/@vidhunvwarrier</span>
                   </div>
                 </div>
               </div>
